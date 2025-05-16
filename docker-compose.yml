@@ -1,0 +1,26 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=budi
+      - POSTGRES_PASSWORD=samator123.
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/ecommerce
+      - SPRING_DATASOURCE_USERNAME=budi
+      - SPRING_DATASOURCE_PASSWORD=samator123.
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=budi
+      - POSTGRES_PASSWORD=samator123.
+      - POSTGRES_DB=ecommerce
+    ports:
+      - "5432:5432"
